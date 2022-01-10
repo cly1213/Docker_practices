@@ -8,7 +8,8 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - mongo
+      mongo:
+        condition: service_healthy
   mongo:
     image: mongo:5
     ports:
@@ -16,10 +17,14 @@ services:
     volumes:
       - monogo_data:/data/db
     healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet 1
+      test:
+      - CMD
+      - mongo
+      - --eval
+      - "db.adminCommand('ping')"
       interval: 10s
       timeout: 10s
       retries: 5
-      start_period: 40s
+      start_period: 10s
 volumes:
-    monogo_data:
+  monogo_data:

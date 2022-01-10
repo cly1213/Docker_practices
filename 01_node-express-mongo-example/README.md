@@ -8,3 +8,9 @@ This is a sample application demonstrating how to build an Node.js express RESTf
 2. Install dependencies: `npm install`
 3. Start your mongoDB instance. This repo works on an instance running on `localhost:27017`
 4. Start the application: `node index.js`
+
+## Docker Compose
+
+Ref: 
+
+https://github.com/compose-spec/compose-spec/blob/master/spec.md#depends_on
