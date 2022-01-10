@@ -9,7 +9,7 @@ services:
       - 3000:3000
     depends_on:
       mongo:
-        condition: service_healthy
+        condition: service_healthy #express run after the mongodb health check
   mongo:
     image: mongo:5
     ports:
